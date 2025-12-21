@@ -1,0 +1,113 @@
+/* style.css */
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: #e9ecef;
+    display: flex;
+    justify-content: center;
+    padding-top: 60px;
+}
+
+
+.container {
+    background-color: white;
+    width: 450px;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+    text-align: center;
+    color: #2c3e50;
+    margin-bottom: 25px;
+}
+
+.input-group {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 25px;
+}
+
+input[type="text"] {
+    flex: 1; 
+    padding: 12px;
+    border: 2px solid #ddd;
+    border-radius: 6px;
+    font-size: 16px;
+    outline: none;
+    transition: border-color 0.3s;
+}
+
+input[type="text"]:focus {
+    border-color: #3498db;
+}
+
+.btn-add {
+    padding: 0 25px;
+    background-color: #3498db;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 16px;
+    transition: background-color 0.2s;
+}
+
+.btn-add:hover {
+    background-color: #2980b9;
+}
+
+ul {
+    list-style: none;
+}
+li {
+    background-color: #fff;
+    border-bottom: 1px solid #f1f1f1;
+    padding: 12px 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    transition: background 0.2s;
+}
+
+li:hover {
+    background-color: #f8f9fa;
+}
+
+
+.task-text {
+    flex: 1;
+    margin-left: 10px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+li.completed .task-text {
+    text-decoration: line-through;
+    color: #adb5bd;
+}
+
+.btn-delete {
+    background-color: #e74c3c;
+    color: white;
+    border: none;
+    padding: 6px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    margin-left: 10px;
+    opacity: 0; 
+    transition: opacity 0.2s;
+}
+
+li:hover .btn-delete {
+    opacity: 1; 
+}
