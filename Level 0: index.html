@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todo App</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h2>My ToDo App</h2>
+        <div class="input-group">
+            <input type="text" id="taskInput" placeholder="What we need to do today?">
+            <button onclick="addTask()" class="btn-add">Add</button>
+        </div>
+        <ul id="taskList">
+
+        </ul>
+    </div>
+
+    <script>
+        const taskInput=document.getElementById("taskInput");
+        const taskList=document.getElementById("taskList");
+
+        //Create
+        function addTask(){
+            const inputValue=taskInput.value.trim();
+             
+            if(inputValue==''){
+                alert("You need to add content!");
+                return;
+            }
+
+            const li=document.createElement("li");
+            li.innerHTML=`
+                <input type="checkbox" onclick=toggleComplete(this)>
+                <span class="task-text" onclick=toggleCompleteByText(this)>${inputValue}</span>
+                <button class="btn-delete" onclick="deleteTask(this)">Delete</button>
+                <button class="btn-edit" onclick="editTask(this)">Edit</button>
+                `;
+            taskList.appendChild(li);
+            taskInput.value="";
+        }
+
+        //Delete
+        function deleteTask(buttonElement){
+            const li =buttonElement.parentElement;
+            li.remove();
+        }
+
+        //Edit
+        function editTask(buttonElement){
+            const li=buttonElement.parentElement;
+            const span=li.querySelector(".task-text");
+            const newText=prompt("Enter new task: ",span.textContent);
+            
+            if(newText==null && newText.trim()!==""){
+                span.textContent=newText.trim();
+            }
+        }
+
+        function toggleComplete(checkboxElement){
+            const li=checkboxElement.parentElement;
+            if(checkboxElement.checked){
+                li.classList.add("completed")
+            }else
+            {
+                li.classList.remove("completed");
+            }
+        }
+
+        function toggleCompleteByText(spanElement){
+            const li=spanElement.parentElement;
+            const checkbox=li.querySelector("input[type='checkbox']");
+
+            checkbox.checked=!checkbox.checked;
+            toggleComplete(checkbox);
+        }
+
+        taskInput.addEventListener("keypress", function(event){
+            if(event.key==="Enter"){
+                addTask();
+            }
+        });
+    </script>
+</body>
+</html>
