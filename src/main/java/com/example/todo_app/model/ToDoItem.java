@@ -1,24 +1,23 @@
-package com.example.todo_app.model;
+package com.example.todo_app.model; // Dòng 1 bắt buộc phải có
 
-import lombok.AllArgsConstructor;
+import jakarta.persistence.*; // Import tất cả @Entity, @Id, @Table
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import java.time.Instant;
 import java.util.UUID;
 
+@Entity
+@Table(name = "todos")
 @Data
-@AllArgsConstructor
 @NoArgsConstructor
 public class ToDoItem {
-    private String id; 
-    private String title; 
+    @Id
+    private String id;
+    private String title;
     private boolean completed;
-    private long createdAt;
 
     public ToDoItem(String title) {
         this.id = UUID.randomUUID().toString();
         this.title = title;
         this.completed = false;
-        this.createdAt = Instant.now().getEpochSecond();
     }
 }

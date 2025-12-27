@@ -7,7 +7,6 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
-
 @Service
 public class ToDoService {
     @Autowired
@@ -32,7 +31,6 @@ public class ToDoService {
             if (updateData.getTitle() != null) item.setTitle(updateData.getTitle());
             item.setCompleted(updateData.isCompleted());
             
-            repository.saveToFileAsync(); 
             return item;
         }
         return null;
