@@ -4,6 +4,7 @@ import com.example.todo_app.model.ToDoItem;
 import com.example.todo_app.repository.ToDoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
 import java.util.List;
 import java.util.Optional;
 
@@ -30,6 +31,8 @@ public class ToDoService {
             ToDoItem item = existingTodo.get();
             if (updateData.getTitle() != null) item.setTitle(updateData.getTitle());
             item.setCompleted(updateData.isCompleted());
+            
+            repository.saveToFileAsync(); 
             return item;
         }
         return null;
